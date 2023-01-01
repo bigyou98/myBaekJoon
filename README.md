@@ -1,5 +1,8 @@
 # myBaekJoon
 
+![image](https://user-images.githubusercontent.com/76721795/210163348-4326d521-d12a-4f12-a84b-b0f0687ccb6a.png)<br/>
+프로그래머스 
+
 ### 공부법
 - https://solved.ac/class에 있는 class별로 차근차근 해나가기
 
