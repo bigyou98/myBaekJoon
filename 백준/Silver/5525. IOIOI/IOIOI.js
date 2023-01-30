@@ -8,19 +8,16 @@ let [n, m, s] = require("fs")
 n = +n;
 m = +m;
 
-let count = 0;
-for (let i = 0; i < m - 2 * n; i++) {
-  if (s[i] === "I") {
-    const temp = ["I"];
-    count++;
-    for (let j = i + 1; j < i + 2 * n + 1; j++) {
-      if (temp.at(-1) !== s[j]) {
-        temp.push(s[j]);
-      } else {
-        count--;
-        break;
-      }
+let result = 0; // 최종 값
+let patternCnt = 0; // `IOI` 패턴 연속 횟수
+for (let i = 1; i < m - 1; i++) {
+  if (s[i - 1] == "I" && s[i] == "O" && s[i + 1] == "I") {
+    patternCnt++;
+    if (patternCnt == n) {
+      patternCnt--;
+      result++;
     }
-  }
+    i++;
+  } else patternCnt = 0;
 }
-console.log(count);
+console.log(result);
