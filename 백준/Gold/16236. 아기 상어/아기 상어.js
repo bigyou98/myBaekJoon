@@ -65,23 +65,22 @@ for (let i = 0; i < n; i++) {
 
 let answer = 0;
 while (fish.length !== 0) {
+  // 정렬하기
   fish.sort((a, b) => {
     let A = a.distance;
     let B = b.distance;
-    if (A < B) return -1;
-    else if (A > B) return 1;
-    else {
+    if (A === B) {
       A = a.X;
       B = b.X;
-      if (A < B) return -1;
-      else if (A > B) return 1;
-      else {
+      if (A === B) {
         A = a.Y;
         B = b.Y;
-        if (A < B) return -1;
-        else if (A > B) return 1;
-        else return 0;
+        return A - B;
+      } else {
+        return A - B;
       }
+    } else {
+      return A - B;
     }
   });
   // 이동
