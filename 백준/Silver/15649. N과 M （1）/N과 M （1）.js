@@ -1,28 +1,30 @@
 const filePath = process.platform === "linux" ? "/dev/stdin" : "예제.txt";
-let [n, m] = require("fs").readFileSync(filePath).toString().trim().split(" ");
-n = +n;
-m = +m;
+let [input] = require("fs")
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split("\n");
+const [n, m] = input.split(" ").map(Number);
 
-function permutations(arr, n) {
-  if (n === 1) return arr.map((v) => [v]);
-  let result = [];
+const visited = Array(n + 1).fill(false);
 
-  arr.forEach((fixed, idx, arr) => {
-    const rest = arr.filter((_, index) => index !== idx);
-    const perms = permutations(rest, n - 1);
-    const combine = perms.map((v) => [fixed, ...v]);
-    result.push(...combine);
-  });
+let answer = "";
+const temp = [];
+const dfs = (cnt) => {
+  if (cnt === m) {
+    answer += `${temp.join(" ")}\n`;
+    return;
+  }
 
-  return result;
-}
-
-const answer = permutations(
-  Array.from(Array(n), (_, i) => i + 1),
-  m
-);
-let str = "";
-answer.forEach((data) => {
-  str += `${data.join(" ")}\n`;
-});
-console.log(str);
+  for (let i = 1; i <= n; i++) {
+    if (!visited[i]) {
+      visited[i] = true;
+      temp.push(i);
+      dfs(cnt + 1);
+      visited[i] = false;
+      temp.pop();
+    }
+  }
+};
+dfs(0);
+console.log(answer);
