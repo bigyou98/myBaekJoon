@@ -1,28 +1,33 @@
 const filePath = process.platform === "linux" ? "/dev/stdin" : "예제.txt";
-let [n, m] = require("fs").readFileSync(filePath).toString().trim().split(" ");
-n = +n;
-m = +m;
+let [input] = require("fs")
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split("\n");
+const [n, m] = input.split(" ").map(Number);
 
-function combinations(arr, n) {
-  if (n === 1) return arr.map((v) => [v]);
-  const result = [];
+let result = "";
 
-  arr.forEach((fixed, idx, arr) => {
-    const rest = arr.slice(idx + 1);
-    const combis = combinations(rest, n - 1);
-    const combine = combis.map((v) => [fixed, ...v]);
-    result.push(...combine);
-  });
+const visited = Array(n).fill(false);
 
-  return result;
-}
+const queue = [];
+const dfs = (value) => {
+  if (queue.length === m) {
+    result += `${queue.join(" ")}\n`;
+    return;
+  }
 
-const answer = combinations(
-  Array.from(Array(n), (_, i) => i + 1),
-  m
-);
-let str = "";
-answer.forEach((data) => {
-  str += `${data.join(" ")}\n`;
-});
-console.log(str);
+  for (let i = 0; i < n; i++) {
+    if (!visited[i] && value < i + 1) {
+      visited[i] = true;
+      queue.push(i + 1);
+      dfs(i + 1);
+      queue.pop();
+      visited[i] = false;
+    }
+  }
+};
+
+dfs(0);
+
+console.log(result);
