@@ -1,29 +1,33 @@
 const filePath = process.platform === "linux" ? "/dev/stdin" : "예제.txt";
-let [input, map] = require("fs")
+let [input, arr] = require("fs")
   .readFileSync(filePath)
   .toString()
   .trim()
   .split("\n");
 const [n, m] = input.split(" ").map(Number);
-map = map
+arr = arr
   .split(" ")
   .map(Number)
   .sort((a, b) => a - b);
 
-function permutations(arr, n) {
-  if (n === 1) return arr.map((v) => [v]);
-  let result = [];
+let result = "";
+const temp = [];
 
-  arr.forEach((fixed, idx, arr) => {
-    const rest = arr.filter((_, index) => index !== idx);
-    const perms = permutations(rest, n - 1);
-    const combine = perms.map((v) => [fixed, ...v]);
-    result.push(...combine);
-  });
+const visited = Array(n).fill(false);
+const dfs = () => {
+  if (temp.length === m) {
+    result += `${temp.join(" ")}\n`;
+  }
+  for (let i = 0; i < n; i++) {
+    if (!visited[i]) {
+      visited[i] = true;
+      temp.push(arr[i]);
+      dfs();
+      temp.pop();
+      visited[i] = false;
+    }
+  }
+};
 
-  return result;
-}
-let answer = permutations(map, m).reduce((acc, cur) => {
-  return acc + cur.join(" ") + "\n";
-}, "");
-console.log(answer);
+dfs();
+console.log(result);
