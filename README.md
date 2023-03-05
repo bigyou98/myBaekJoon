@@ -11,3 +11,9 @@
 
 ![image](https://user-images.githubusercontent.com/76721795/210306243-e9841142-a0b8-4440-a361-03a070335614.png)
 **[ 2022-12-20 ~ 2023-01-03 ]**
+
+![image](https://user-images.githubusercontent.com/76721795/222956705-91342e11-5a88-409a-ad05-edd8a12bc29b.png)
+**[ 2023-01-04 ~ 2023-02-18 ]**
+
+![image](https://user-images.githubusercontent.com/76721795/222956734-99f59001-d5c3-428b-b4f3-05cdb0004957.png)
+**[ 2023-02-19 ~ ing ]**
