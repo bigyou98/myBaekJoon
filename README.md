@@ -11,10 +11,3 @@
 
 ![image](https://user-images.githubusercontent.com/76721795/210306243-e9841142-a0b8-4440-a361-03a070335614.png)
 **[ 2022-12-20 ~ 2023-01-03 ]**
-
----
-
-## 부족한 부분
-**[ 2023.12.30 ~ ing ]**
-
-이진 탐색 문제 풀이 중 [문제집 링크](https://www.acmicpc.net/workbook/view/9764)
