@@ -35,11 +35,12 @@ const BFS = (node) => {
       const [next_node, next_w] = nodes[i];
       if (!visited[next_node]) {
         visited[next_node] = true;
-        queue.push([next_node, w + next_w]);
+        let sum = w + next_w;
+        queue.push([next_node, sum]);
         // record 갱신하기
-        if (record.distance < w + next_w) {
+        if (record.distance < sum) {
           record.node = next_node;
-          record.distance = w + next_w;
+          record.distance = sum;
         }
       }
     }
