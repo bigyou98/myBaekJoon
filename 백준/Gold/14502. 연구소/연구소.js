@@ -6,7 +6,6 @@ let [[n, m], ...map] = require('fs')
   .split('\n')
   .map((data) => data.split(' ').map(Number));
 
-const visited = map.map((data) => [...data]);
 const queue = [];
 
 const virus = [];
@@ -17,16 +16,15 @@ const dy = [-1, 1, 0, 0];
 
 for (let i = 0; i < n; i++) {
   for (let j = 0; j < m; j++) {
-    if (visited[i][j] === 2) {
+    if (map[i][j] === 2) {
       virus.push([i, j]);
     }
-    if (visited[i][j] === 0) {
+    if (map[i][j] === 0) {
       queue.push([i, j]);
     }
   }
 }
 const BFS = (q, w, e, r, t, y) => {
-  // 복사한 값
   const copy_map = map.map((data) => [...data]);
   copy_map[q][w] = 1;
   copy_map[e][r] = 1;
