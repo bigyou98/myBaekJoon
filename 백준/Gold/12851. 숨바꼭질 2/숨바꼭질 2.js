@@ -104,7 +104,6 @@ const solution = (start, target) => {
       queue.insert([next_value, next_time]);
       if (next_value === target) {
         answer.push({ value: next_value, time: next_time });
-        visited[next_value] = false;
       }
     }
     // 방문처리하기
